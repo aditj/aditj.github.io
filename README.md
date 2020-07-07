@@ -13,4 +13,5 @@
 - [x] [56 (a card game based on bridge) I developed](bridgem.herokuapp.com)
 - [x] [Development of Reopening Project](https://dalek2point3.github.io/reopen-website/)
 \n
-##### I also happen to be the Open Source Head of IIT Guwahati's Coding Club ([our repo](https://github.com/Coding-Club-IITG)) and also a Core Team Member of IIT Guwahati's techno-management conference [Nexus](techniche.org/nexus). Contact for collaboration :D. 
+
+###### P.S. I also happen to be the Open Source Head of IIT Guwahati's Coding Club ([our repo](https://github.com/Coding-Club-IITG)) and also a Core Team Member of IIT Guwahati's techno-management conference [Nexus](techniche.org/nexus). Contact for collaboration :D. 
