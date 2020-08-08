@@ -12,6 +12,7 @@
 - [x] [56 (a card game based on bridge) I developed](https://bridgem.herokuapp.com)
 - [x] [Development of Reopening Project](https://dalek2point3.github.io/reopen-website/)
 - [x] [My New Blog](https://github.com/aditj/aditj.github.io/wiki)
+- [x] [Dashboard for analysis CDR/IPDR data](https://github.com/aditj/rk312_konigsberg)
 
 ##### P.S. I also happen to be the Open Source Head of IIT Guwahati's Coding Club ([our repo](https://github.com/Coding-Club-IITG)) and also a Core Team Member of IIT Guwahati's techno-management conference [Nexus](https://www.techniche.org/nexus). Contact for collaboration :D. 
 
