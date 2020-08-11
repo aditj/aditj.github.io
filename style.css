@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans&display=swap');
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+body{
+    background-color: #0F1c70;
+    color: #fffffe;
+}
+a{
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 0.5px dotted silver;
+}
+.background {
+    position:  absolute;
+    display:  block;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    
+  }  #container{
+    width: 80%;
+    margin: auto;
+}
+@media(min-width:992px){
+    #container{
+        width: 40%;
+        margin: auto;
+    }
+}
+#contact ul {
+    list-style-type: none;
+  }
+#contact-group,#outro{
+    text-align: center;
+}
+#outro{
+    font-size: small;
+}
