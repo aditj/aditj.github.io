@@ -10,14 +10,14 @@
         window.onload = function () {
             Particles.init({
                 selector: '.background',
-                color: ['#ffffff'],
+                color: ['#3c096c'],
                 connectParticles: true,
-                maxParticles:200,
+                maxParticles: 200,
                 responsive: [{
                     breakpoint: 768,
                     options: {
                         maxParticles: 200,
-                        color: '#48F2E3',
+                        color: '#3c096c',
                         connectParticles: true
                     }
                 }, {
@@ -31,64 +31,129 @@
                     options: {
                         maxParticles: 0 // disables particles.js
                     }
-                }]
+                }],
+                opacity: {
+                    value: 0.1,
+                },
+                move: {
+                    speed: 50,
+                    enable: true
+                }
             });
         };
     </script>
 </head>
 
 <body>
-
-    <canvas class="background"></canvas>
+    <div class='background' id="background"></div>
     <div id='container'>
-        <div id='intro'>
-           <h2 id='greeting'> Yelllooo! <div >
-               with all the extra l's and o's :P
-           </div></h2> <br>
-            I am Adit Jain. I work(/study/learn) in areas related to Computer Science, Graph Theory, Data Science, WebD , Electronics, Engineering, Social Sciences and Maths. Here's a <a
-                href="https://aditj.github.io/data/180102003_1.pdf">link to my CV</a>. I love to read all kinds of <a
-                href="https://docs.google.com/spreadsheets/d/1MjaHnDybAhPPjJOqcVM-cTij-4azN-dEXVDsHA-Q5mY/edit?usp=sharing">books</a>
-            , learn new topics and skills, discuss and play Squash(or other racquet sports like Badminton/Tennis). I am
-            currently
-            pursuing Bachelor's at <a href="https://www.iitg.ac.in">IIT Guwahati</a> with a major in <a
-                href="https://www.iitg.ac.in/acad/CourseStructure/Btech2018/ECE.htm">Electronics</a> and a minor in <a
-                href="https://www.iitg.ac.in/cse/cseminorcourses/">Computer Sciences</a>.
+        <h2 id='greeting'> Adit Jain <div>
+                Hey there! My name's Adit and this is my personal website. Also sorry, couldnt come up with a better
+                title 😛
         </div>
-        <div id='contact'>
-            
-                <div id='contact-group'>
-                <a href="https://t.me/aditjain"><img src="images/telegram.png" alt="aditjain"></a>
-               <a href="mailto:aditjain1980@gmail.com"><img src="images/mail.png" alt="aditjain1980@gmail.com"></a>
-               <a href="https://www.linkedin.com/in/adit-jain/"><img src="images/linkedin.png" alt="adit-jain"></a>
-               <br>
-               Reach Me
+        </h2> <br>
+        <div id='intro'>
+
+
+            <div>
+                <br>
+                I work(/study/learn) in areas related to Computer Science, Communications, Graph Theory, Data Science,
+                WebD , Electronics, Engineering, Social Sciences and Maths.
+                <br> Here's a <a href="https://aditj.github.io/data/180102003_1.pdf">link to my CV</a>. I love to read
+                all kinds of <a
+                    href="https://docs.google.com/spreadsheets/d/1MjaHnDybAhPPjJOqcVM-cTij-4azN-dEXVDsHA-Q5mY/edit?usp=sharing">books</a>
+                , learn new topics and skills, discuss and debate and also play racquet sports like Badminton,Tennis &
+                Squash. I am
+                currently pursuing Bachelor's at <a href="https://www.iitg.ac.in">IIT Guwahati</a> with a major in <a
+                    href="https://www.iitg.ac.in/acad/CourseStructure/Btech2018/ECE.htm">Electronics</a> and a minor in
+                <a href="https://www.iitg.ac.in/cse/cseminorcourses/">Computer Sciences</a>.
+            </div>
+            <div id="profile-container">
+                <img id='profile' src="data/profile.jpg" alt="">
+
             </div>
         </div>
+        <div>
+            Here's some of my past work:
+        </div>
+        <div class='tabs'>
+            <button id='projects-button' class='tablinks' data-link="projects">
+                Projects
+            </button>
+            <button class='tablinks' data-link="decks">
+                Decks
+            </button>
+            <button class='tablinks' data-link="papers">
+                Write-Ups
+            </button>
+            <button class='tablinks' data-link="views">
+                Views
+            </button>
+
+        </div>
         <div id='about-me'>
-
-
-            Some of my works:
-            <ul>
-                <li><img src="images/github.svg" alt=""><a href="https://github.com/aditj">   Github Account</a></li>
+            <ul id="projects">
+                <li><img src="images/github.svg" alt=""><a href="https://github.com/aditj"> Github Account</a></li>
                 <li><img src="images/virus.svg" alt=""><a href="http://coronanearme.com"> CoronaNearMe</a></li>
-                <li><img src="images/playing-cards.svg" alt="">  <a href="https://bridgem.herokuapp.com">Online Multiplayer 56 (a card game based on bridge) I
+                <li><img src="images/playing-cards.svg" alt=""> <a href="https://bridgem.herokuapp.com">Online
+                        Multiplayer 56 (a card game based on bridge) I
                         developed</a>
                 </li>
-                <li><img src="images/dashboard_1.svg" alt=""><a href="https://dalek2point3.github.io/reopen-website/"> Development of Reopening Project Dashboard</a></li>
-                <li><img src="images/blog.svg" alt=""><a href="https://github.com/aditj/aditj.github.io/wiki"> My in-progress blog</a></li>
-                <li><img src="images/dashboard.svg" alt=""> <a href="https://github.com/aditj/rk312_konigsberg">Dashboard for analysis CDR/IPDR data</a></li>
+                <li><img src="images/dashboard_1.svg" alt=""><a href="https://dalek2point3.github.io/reopen-website/">
+                        Development of Reopening Project Dashboard</a></li>
+                <li><img src="images/blog.svg" alt=""><a href="https://github.com/aditj/aditj.github.io/wiki"> My
+                        in-progress blog</a></li>
+                <li><img src="images/dashboard.svg" alt=""> <a
+                        href="https://github.com/aditj/rk312_konigsberg">Dashboard for analysis CDR/IPDR data</a></li>
             </ul>
+            <ul id="papers">
+                <li><a href="/data/papers/btp.pdf"> Project on Intelligent Reflecting Surfaces(6-G Technology)
+                        activation patterns</a></li>
+                <li><a href="/data/papers/language.pdf">Paper Review of 'Language Flex Cultural Thinking' by Ceri Ellis
+                        et. al</a></li>
+                <li><a href="/data/papers/iot.PDF">Paper Review of 'Optimized task scheduling on fog computing
+                        environment using metaheuristic algorithms' </a> </li>
+            </ul>
+            <ul id="decks">
+                <li><a href="/data/decks/Strategic Roadmap.pdf"> Strategic Roadmap for Ed-Tech in Tier 2/3 Towns</a>
+                </li>
+
+                <li><a href="/data/decks/Nexus Pitch.pdf"> Nexus Pitch Deck</a></li>
+                <li><a href="/data/decks/Open-Source Session.pdf"> Intro to Open Source</a></li>
+            </ul>
+            <div id="views">
+                <small>Coming Soon 😀</small>
+            </div>
+        </div>
+      
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="script.js"></script>
+    <footer id="footer">
+
+       
+        <div id='contact'>
+    
+            <div id='contact-group'>
+                <a href="https://t.me/aditjain"><img src="images/telegram.png" alt="aditjain"></a>
+                <a href="mailto:aditjain1980@gmail.com"><img src="images/mail.png" alt="aditjain1980@gmail.com"></a>
+                <a href="https://www.linkedin.com/in/adit-jain/"><img src="images/linkedin.png" alt="adit-jain"></a>
+                <br>
+                Reach Me
+            </div>
         </div>
         <div id='outro'>
-        P.S. I also happen to be the Open Source Head of IIT Guwahati's Coding Club (<a
-            href="https://github.com/Coding-Club-IITG">our Github Org</a>) and also a Core Team Member of IIT Guwahati's
-        techno-management conference <a href="https://www.techniche.org/nexus">Nexus</a>. Contact for collaboration.
-        <br> *Non Creepy Thank You Smile*
-    </div>
-    </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
-
+            P.S. I also happen to be the Open Source Head of IIT Guwahati's Coding Club (<a
+                href="https://github.com/Coding-Club-IITG">our Github Org</a>) and was also a Core Team Member of
+            IIT Guwahati's
+            techno-management conference <a href="https://www.techniche.org/nexus">Nexus</a>. Contact for
+            collaboration.
+            <br> *Non Creepy Thank You Smile*
+        </div>
+    
+    </footer>
 </body>
 
 </html>
