@@ -73,12 +73,15 @@ ul#projects {
 
 #about-me {
     height: 50vh;
+    font-size: 20px;
 }
+
 
 #intro {
     padding-bottom: 5px;
     /* border-bottom: 0.5px dashed black; */
     margin-bottom: 3%;
+    font-size: 15px;
 }
 
 @media(min-width:992px) {
@@ -111,6 +114,7 @@ ul#projects {
 
 .tabs {
     display: flex;
+    font-size: 20px;
 }
 
 .tablinks {
