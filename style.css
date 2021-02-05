@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@323;400;623&display=swap');
 :root {
     --background: ;
 
@@ -9,13 +6,13 @@
 }
 
 * {
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'Dosis', sans-serif;
     font-size: 1.05em;
 }
 
 h2 {
     font-size: 2em;
-    font-family: 'Recursive', sans-serif;
+    font-family: 'Dosis', sans-serif;
 }
 
 body {
@@ -120,9 +117,17 @@ ul#projects {
 .tablinks {
     margin: auto;
     background: none;
-    border: none;
+    text-align: center;
+    /* color: #9B9ECE; */
+    width: 100%;
+    cursor: pointer;
 }
-
+.selected-tab{
+    font-weight: bolder;
+    border-radius: 17px 17px 0px 1px;
+    border-bottom: 1px solid #574D68;
+    color: #574D68;
+}
 #contact-group,
 #outro {
     text-align: center;
@@ -133,9 +138,22 @@ ul#projects {
 }
 
 li {
-    font-size: 0.8em;
+    font-size:14px;
+    font-size: 14px;
+    display: inline-block;
+    padding: 2%;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 1px;
 }
+li:hover{
 
+    background: #574D68;;
+    color: white;
+}
+li>a{
+    border: none;
+}
 li>img {
     width: 25px;
 }
