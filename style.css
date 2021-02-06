@@ -160,7 +160,7 @@ li>img {
 
 #greeting {
     text-align: center;
-    font-family: 'Recursive', sans-serif;
+    /* font-family: 'Recursive', sans-serif; */
     border-bottom: 0.5px dashed #003049;
 }
 
