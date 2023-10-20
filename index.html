@@ -6,49 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adit Jain</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-        window.onload = function () {
-            Particles.init({
-                selector: '.background',
-                color: ['#3c096c'],
-                connectParticles: true,
-                maxParticles: 200,
-                responsive: [{
-                    breakpoint: 768,
-                    options: {
-                        maxParticles: 200,
-                        color: '#3c096c',
-                        connectParticles: true
-                    }
-                }, {
-                    breakpoint: 425,
-                    options: {
-                        maxParticles: 30,
-                        connectParticles: true
-                    }
-                }, {
-                    breakpoint: 320,
-                    options: {
-                        maxParticles: 0 // disables particles.js
-                    }
-                }],
-                opacity: {
-                    value: 0.1,
-                },
-                move: {
-                    speed: 50,
-                    enable: true
-                }
-            });
-        };
-    </script>
+   
 </head>
 
 <body>
     <div class='background' id="background"></div>
     <div id='container'>
         <h2 id='greeting'> Adit Jain <div>
-                Hey there! 
+                Hi! 
         </div>
         </h2> 
         <div id='intro'>
@@ -56,79 +21,72 @@
 
             <div>
                 
-                I work(/study/learn) in areas related to Computer Science, Communications, Graph Theory, Data Science,
-                WebD , Electronics, Engineering, Social Sciences and Maths.
-                <br> Here's a <a href="https://aditj.github.io/data/180102003_1.pdf">link to my CV</a>. I love to read
-                all kinds of <a
-                    href="https://docs.google.com/spreadsheets/d/1MjaHnDybAhPPjJOqcVM-cTij-4azN-dEXVDsHA-Q5mY/edit?usp=sharing">books</a>
-                , learn new topics and skills, discuss and debate and also play racquet sports like Badminton,Tennis &
-                Squash. I am
-                currently pursuing Bachelor's at <a href="https://www.iitg.ac.in">IIT Guwahati</a> with a major in <a
-                    href="https://www.iitg.ac.in/acad/CourseStructure/Btech2018/ECE.htm">Electronics</a> and a minor in
-                <a href="https://www.iitg.ac.in/cse/cseminorcourses/">Computer Sciences</a>.
+                I work(/study/learn) in areas related to reinforcement learning, distributed optimization and stochastic games.
+                Here's my 2 page <a href="https://aditj.github.io/data/Adit_Jain_Resume.pdf">resume</a>. <br>
+                
+                I am currently pursuing a PhD from <a href="https://ece.cornell.edu">Cornell ECE</a> where I am working with Prof. Vikram Krishnamurthy. I did my Bachelor's at <a href="https://www.iitg.ac.in">IIT Guwahati</a> majoring in <a
+                href="https://www.iitg.ac.in/acad/CourseStructure/Btech2018/ECE.htm">Electronics</a> with a minor in
+            <a href="https://www.iitg.ac.in/cse/cseminorcourses/">CS</a>.
+                <br>
+                I love to read all kinds of <a
+                    href="https://aditjain.notion.site/Library-8fec747c2ccb45adacd8cf4e46d4fcff?pvs=4">books</a>
+                , learn new topics and skills, discuss and debate, and also play racquet sports like Badminton &
+                Squash. 
+                <br>
+                
             </div>
             <div id="profile-container">
                 <img id='profile' src="data/profile.jpg" alt="">
 
             </div>
         </div>
-       
+        <div>Following are some of my works, with some sections incomplete and under construction.</div>
+
         <div class='tabs'>
-            <div id='projects-div' class='tablinks' data-link="projects">
-                Projects
+            <div id='projects-div' class='tablinks' data-link="papers">
+                Publications 
+            </div>
+            <div class='tablinks' data-link="blog">
+             Blog
+            </div>
+            <div class='tablinks' data-link="failures">
+                Failures & Learnings
             </div>
             <div class='tablinks' data-link="decks">
                 Decks
             </div>
-            <div class='tablinks' data-link="papers">
-                Write-Ups
-            </div>
-            <div class='tablinks' data-link="views">
-                Views
-            </div>
-
+            
         </div>
+
         <div id='about-me'>
-            <ul id="projects">
-                <li><a href="https://github.com/aditj"> Github Account</a></li>
-                <li><a href="http://coronanearme.com">Small America Recovered Better </a></li>
-                <li><a>Virtual Trading Platform</a></li>
-                <li><a href="http://coronanearme.com"> CoronaNearMe</a></li>
-                <li> <a href="https://bridgem.herokuapp.com">Online
-                        Multiplayer 56 (a card game based on bridge) I
-                        developed</a>
-                </li>
-                <li><a href="https://dalek2point3.github.io/reopen-website/">
-                        Development of Reopening Project Dashboard</a></li>
-                <li><a href="https://github.com/aditj/aditj.github.io/wiki"> My
-                        in-progress blog</a></li>
-                <li><a href="https://github.com/aditj/rk312_konigsberg">Dashboard for analysis CDR/IPDR data</a></li>
-            </ul>
             <ul id="papers">
-                <li><a href="/data/papers/btp.pdf"> Project on Intelligent Reflecting Surfaces(6-G Technology)
-                        activation patterns</a></li>
-                <li><a href="/data/papers/language.pdf">Paper Review of 'Language Flex Cultural Thinking' by Ceri Ellis
-                        et. al</a></li>
-                <li><a href="/data/papers/iot.PDF">Paper Review of 'Optimized task scheduling on fog computing
-                        environment using metaheuristic algorithms' </a> </li>
-               <li><a href="/data/papers/dr.PDF">Dimension Reduction of Random Effects for Generalized Linear Mixed Models </a> </li>
-                        
+                <li><a href="https://arxiv.org/pdf/2308.08825">Controlling Federated Learning for Covertness - arXiv</a></li>
+                <li><a href="https://ieeexplore.ieee.org/abstract/document/9806790"> Low Complexity Passive Beamforming Algorithms for Intelligent Reflecting Surfaces with Discrete Phase-Shifts over OFDM Systems - IEEE</a></li>
+               <!-- <li><a href="/data/papers/dr.PDF">Dimension Reduction of Random Effects for Generalized Linear Mixed Models </a> </li>    
+                -->
+                <li>Under review: Structured Reinforcement Learning for Robust Federated Learning</li>
+                <li>Under review: Optimal Joint Antenna Selection and Beamforming for an Intelligent Reflecting Surfaces
+                    Aided Multiuser System</li>
             </ul>
             <ul id="decks">
-                <li><a href="/data/decks/StrategicRoadmap.pdf"> Strategic Roadmap for Ed-Tech in Tier 2/3 Towns</a>
-                </li>
+                <li><a href="/data/decks/StrategicRoadmap.pdf"> Strategic Roadmap for Ed-Tech in Tier 2/3 Towns</a></li>
                 <li><a href="/data/decks/interdeck.pdf"> Handicrafts under Blockchain Deck</a></li>
                 <li><a href="/data/decks/interreport.pdf"> Handicrafts under Blockchain Report</a></li>
                 <li><a href="/data/decks/Product Detailing Dyson Air Purifier.pdf">Product Analysis: Dyson Air Purifier</a></li>
-
                 <li><a href="/data/decks/Nexus Pitch.pdf"> Nexus Pitch Deck</a></li>
                 <li><a href="/data/decks/Open-Source Session.pdf"> Intro to Open Source</a></li>
             </ul>
-            
-                <ul id="views">
-                    <li><a href="https://github.com/aditj/aditj.github.io/wiki/The-Branching-Point">The Branching Point</a></li>
-                    <li><a href="https://github.com/aditj/aditj.github.io/wiki/Note-on-Flow---the-book---11--07-2020">The experience of experience</a></li>
-                </ul>
+            <ul id="blog">
+                <li><a href="https://github.com/aditj/aditj.github.io/wiki/The-Branching-Point">The Branching Point</a></li>
+                <li><a href="https://github.com/aditj/aditj.github.io/wiki/Note-on-Flow---the-book---11--07-2020">The experience of experience</a></li>
+            </ul>
+            <ul id="failures">
+                <li>Conference on Decision and Control</li>
+                <li>Summer Internship</li>
+                <li>Blip</li>
+                <li>CoronaNearMe</li>
+                <li>Google SOC</li>
+            </ul>
         </div>
       
     </div>
@@ -142,7 +100,7 @@
         <div id='contact'>
     
             <div id='contact-group'>
-                <a href="https://t.me/aditjain"><img src="images/telegram.png" alt="aditjain"></a>
+                <a href="https://github.com/aditj"><img width="32px" src="images/github.svg" alt="Github"></a>
                 <a href="mailto:aditjain1980@gmail.com"><img src="images/mail.png" alt="aditjain1980@gmail.com"></a>
                 <a href="https://www.linkedin.com/in/adit-jain/"><img src="images/linkedin.png" alt="adit-jain"></a>
                 <br>
@@ -150,11 +108,7 @@
             </div>
         </div>
         <div id='outro'>
-            P.S. I also happen to be the Open Source Head of IIT Guwahati's Coding Club (<a
-                href="https://github.com/Coding-Club-IITG">our Github Org</a>) and was also a Core Team Member of
-            IIT Guwahati's
-            techno-management conference <a href="https://www.techniche.org/nexus">Nexus</a>. Contact for
-            collaboration.
+            Thanks for visiting my website! Feel free to reach out!
             <br> *Non Creepy Thank You Smile*
         </div>
     

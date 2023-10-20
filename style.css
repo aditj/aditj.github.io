@@ -69,7 +69,7 @@ ul#projects {
 }
 
 #about-me {
-    height: 50vh;
+    /* height: 50vh; */
     font-size: 20px;
 }
 
@@ -83,7 +83,7 @@ ul#projects {
 
 @media(min-width:992px) {
     #container {
-        width: 50%;
+        width: 80%;
         margin: auto;
     }
 
@@ -146,7 +146,7 @@ li {
     padding: 2%;
     border: 1px solid black;
     border-radius: 8px;
-    margin: 1px;
+    margin: 5px;
    
     padding: 10px ;
 }
