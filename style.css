@@ -18,6 +18,9 @@ h2 {
 body {
     background-color: var(--background);
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
 
 }
@@ -48,7 +51,7 @@ a {
 }
 
 #profile {
-    border-radius: 50%;
+    border-radius: 0;
     width: 10em;
     margin: auto;
 
@@ -66,6 +69,7 @@ ul#projects {
     padding-right: 10px;
     padding-top: 5px;
     border-radius: 2%;
+    flex: 1;
     
 }
 #header-container{
@@ -164,25 +168,59 @@ ul{
 }
 li {
     font-size:14px;
-    font-size: 14px;
-    display: inline-block;
-    padding: 2%;
+    display: block;
+    padding: 1% 1% 1% 15px;
     border: 1px solid black;
     border-radius: 8px;
-    margin: 5px;
-   
-    padding: 10px ;
+    margin: 10px 0;
 }
 li:hover{
 
     background: #574D68;;
     color: white;
 }
-li>a{
-    border: none;
+
+/* Make anchor tags in #papers list block elements to fill the li */
+#papers li > a {
+    display: block; /* Fill the width */
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from li (useful for hover) */
+    /* Ensure the anchor respects parent padding */
+    height: 100%; 
+    width: 100%;
+    border: none; /* Override default and inherited borders */
 }
+
+li>a{
+    border: none; /* Keep this general rule for other lists potentially */
+}
+
 li>img {
     width: 25px;
+}
+
+/* Style for publication tags */
+.pub-tag {
+    display: inline-block;
+    background-color: #eee;
+    color: #333;
+    padding: 3px 8px;
+    margin-left: 10px;
+    border-radius:4px;
+    font-size: 0.8em;
+    vertical-align: middle;
+}
+
+/* Style for venue tags */
+.pub-venue {
+    display: inline-block; 
+    background-color: #ddeeff; /* Light blue background */
+    color: #333; 
+    padding: 3px 8px;
+    margin-right: 10px; /* Space before text */
+    border-radius: 4px;
+    font-size: 0.8em; 
+    vertical-align: middle; 
 }
 
 #greeting {
@@ -205,10 +243,23 @@ li>img {
 }
 
 #footer {
-    position: relative;
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
-    margin-top: 12em;
+    margin-top: 2em;
+}
+
+/* Added styles for fixed contact box */
+#contact {
+  position: fixed;
+  top: 20px; 
+  right: 20px;
+  z-index: 100; /* Ensure it stays on top */
+  background-color: rgba(230, 230, 230, 0.85); /* Light semi-transparent background */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional shadow */
+  text-align: center; 
 }
