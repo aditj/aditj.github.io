@@ -32,9 +32,8 @@ body {
 
 #container {
     max-width: 1200px;
-    width: calc(100% - 200px);
+    width: 90%;
     margin: 0 auto;
-    margin-left: 200px;
     padding: 0 1rem;
 }
 
@@ -48,7 +47,6 @@ body {
     font-weight: 600;
     color: var(--accent-color);
     margin-bottom: 1rem;
-}
 nav#main-nav {
     display:flex;
     justify-content: space-between;
@@ -62,30 +60,6 @@ nav#main-nav ul {
 }
 nav#main-nav li {
     margin:0;
-}
-#side-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 180px;
-    height: 100%;
-    padding-top: 2rem;
-    background: var(--background);
-    border-right: 1px solid var(--border-color);
-}
-#side-nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0 1rem;
-}
-#side-nav a {
-    color: var(--accent-color);
-    text-decoration: none;
-}
-#side-nav a:hover {
-    text-decoration: underline;
 }
 #theme-toggle {
     display:flex;
@@ -289,13 +263,8 @@ a:hover {
         font-size: 2rem;
     }
 
-    #side-nav {
-        display: none;
-    }
-
     #container {
         width: 95%;
-        margin-left: auto;
     }
 
     #contact {
