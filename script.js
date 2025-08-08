@@ -27,32 +27,88 @@ document.addEventListener('DOMContentLoaded', function () {
   // Publications: Show all / Show less
   const papersList = document.getElementById('papers');
   const togglePubsBtn = document.getElementById('toggle-pubs');
+  const searchInput = document.getElementById('pubs-search');
+  const tagsContainer = document.getElementById('pubs-tags');
   const defaultVisibleCount = 6;
-  function applyPublicationsClamp(expanded) {
+
+  function normalizeText(text) { return (text || '').toLowerCase(); }
+
+  function collectUniqueTags() {
+    if (!papersList || !tagsContainer) return [];
+    const tags = new Set();
+    papersList.querySelectorAll('.pub-tag').forEach(tag => tags.add(tag.textContent.trim()));
+    return Array.from(tags);
+  }
+
+  function renderTags(tags) {
+    if (!tagsContainer) return;
+    tagsContainer.innerHTML = '';
+    tags.forEach(t => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip';
+      btn.textContent = t;
+      btn.dataset.tag = t;
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('is-active');
+        applyFilterClamp();
+      });
+      tagsContainer.appendChild(btn);
+    });
+  }
+
+  function getActiveTags() {
+    if (!tagsContainer) return [];
+    return Array.from(tagsContainer.querySelectorAll('.chip.is-active')).map(chip => chip.dataset.tag);
+  }
+
+  function matchFilters(li) {
+    const query = normalizeText(searchInput ? searchInput.value : '');
+    const activeTags = getActiveTags();
+    const text = normalizeText(li.textContent);
+    const hasQuery = query.length === 0 || text.includes(query);
+    const hasTags = activeTags.length === 0 || activeTags.every(tag => text.includes(tag.toLowerCase()));
+    return hasQuery && hasTags;
+  }
+
+  function applyFilterClamp(expandedState) {
     if (!papersList) return;
     const items = Array.from(papersList.querySelectorAll('li'));
-    if (items.length <= defaultVisibleCount) {
-      if (togglePubsBtn) togglePubsBtn.style.display = 'none';
-      return;
-    }
-    items.forEach((li, idx) => {
-      if (!expanded && idx >= defaultVisibleCount) {
-        li.classList.add('hidden');
+    let visibleIdx = 0;
+    const expanded = expandedState !== undefined ? expandedState : (togglePubsBtn && togglePubsBtn.getAttribute('aria-expanded') === 'true');
+    items.forEach(li => {
+      if (matchFilters(li)) {
+        if (!expanded && visibleIdx >= defaultVisibleCount) {
+          li.classList.add('hidden');
+        } else {
+          li.classList.remove('hidden');
+        }
+        visibleIdx += 1;
       } else {
-        li.classList.remove('hidden');
+        li.classList.add('hidden');
       }
     });
     if (togglePubsBtn) {
-      togglePubsBtn.textContent = expanded ? 'Show less' : 'Show all';
-      togglePubsBtn.setAttribute('aria-expanded', String(expanded));
+      const anyHidden = items.some(li => li.classList.contains('hidden'));
+      togglePubsBtn.style.display = anyHidden ? '' : 'none';
     }
   }
+
+  if (papersList) {
+    renderTags(collectUniqueTags());
+    applyFilterClamp(false);
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => applyFilterClamp(false));
+  }
+
   if (togglePubsBtn) {
-    let expanded = false;
-    applyPublicationsClamp(expanded);
     togglePubsBtn.addEventListener('click', function () {
-      expanded = !expanded;
-      applyPublicationsClamp(expanded);
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!isExpanded));
+      this.textContent = !isExpanded ? 'Show less' : 'Show all';
+      applyFilterClamp(!isExpanded);
     });
   }
 
@@ -121,3 +177,4 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 });
+

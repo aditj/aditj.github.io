@@ -183,6 +183,39 @@ ul { list-style: none; padding: 0; }
     gap: 1rem;
 }
 
+/* Publications: controls & cards */
+.pubs-controls { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 0.75rem; }
+.input {
+    width: min(420px, 100%);
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.8rem;
+    box-shadow: var(--shadow-sm);
+}
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--muted-text);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+.chip.is-active { color: var(--accent-color); border-color: var(--accent-color); background: color-mix(in oklab, var(--accent-color) 10%, transparent); }
+
+#papers li a { color: inherit; }
+#papers li { position: relative; }
+.pub-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+.pub-actions .btn { padding: 0.4rem 0.6rem; font-size: 0.9rem; }
+.pub-title { font-weight: 600; line-height: 1.45; margin-top: 0.4rem; }
+.pub-authors { color: var(--muted-text); margin-top: 0.4rem; font-size: 0.95rem; }
+.pub-venue.badge { background: color-mix(in oklab, #6aa7ff 18%, var(--card-bg)); color: #1a73e8; border-radius: 999px; padding: 0.22rem 0.55rem; font-size: 0.8rem; }
+.pub-tag.badge { background: color-mix(in oklab, var(--accent-color) 12%, var(--card-bg)); color: var(--accent-color); border-radius: 999px; padding: 0.22rem 0.55rem; font-size: 0.8rem; }
+.badges { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
 li {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
