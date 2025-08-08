@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - Adit Jain</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="blog-page">
+  <div id="container">
+    <a class="back-link" id="back-link" href="/index.html">← Home</a>
+    <h2 id="blog-heading" class="section">Blog</h2>
+
+    <ul id="post-list" class="blog-list"></ul>
+
+    <article id="post-view" class="prose section" hidden>
+      <h1 id="post-title" class="post-title"></h1>
+      <div class="post-meta" id="post-date"></div>
+      <div id="post-content"></div>
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.2/dist/purify.min.js"></script>
+  <script>
+    (function() {
+      function getSlug() {
+        var params = new URLSearchParams(window.location.search);
+        return params.get('slug');
+      }
+
+      function parseFrontMatter(md) {
+        if (!md.startsWith('---')) return { meta: {}, body: md };
+        var end = md.indexOf('\n---');
+        if (end === -1) return { meta: {}, body: md };
+        var fm = md.slice(3, end).trim();
+        var body = md.slice(end + 4).trim();
+        var meta = {};
+        fm.split(/\r?\n/).forEach(function(line){
+          var idx = line.indexOf(':');
+          if (idx === -1) return;
+          var key = line.slice(0, idx).trim();
+          var val = line.slice(idx+1).trim();
+          if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+            val = val.slice(1, -1);
+          }
+          meta[key] = val;
+        });
+        return { meta: meta, body: body };
+      }
+
+      function toDateString(d) {
+        try { return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }); }
+        catch (e) { return d || ''; }
+      }
+
+      function renderMarkdown(md) {
+        var html = marked.parse(md, { mangle: false, headerIds: true });
+        return DOMPurify.sanitize(html);
+      }
+
+      function showList() {
+        document.getElementById('post-view').hidden = true;
+        document.getElementById('post-list').hidden = false;
+        var heading = document.getElementById('blog-heading');
+        heading.hidden = false;
+        heading.textContent = 'Blog';
+        var back = document.getElementById('back-link');
+        if (back) { back.href = '/index.html'; back.textContent = '← Home'; }
+      }
+
+      function showPost() {
+        document.getElementById('post-list').hidden = true;
+        document.getElementById('post-view').hidden = false;
+        var heading = document.getElementById('blog-heading');
+        heading.hidden = true;
+        var back = document.getElementById('back-link');
+        if (back) { back.href = '/blog.html'; back.textContent = '← All posts'; }
+      }
+
+      function fetchPost(slug) {
+        return fetch('/posts/' + encodeURIComponent(slug) + '.md')
+          .then(function(r){ if(!r.ok) throw new Error('Not found'); return r.text(); })
+          .then(function(md){ return parseFrontMatter(md); });
+      }
+
+      function stripLeadingTitle(md, title) {
+        if (!md) return md;
+        var lines = md.replace(/^\s+/, '').split(/\r?\n/);
+        if (lines.length === 0) return md;
+        var first = lines[0].trim();
+        if (first.startsWith('# ')) {
+          var h1 = first.slice(2).trim();
+          if (!title || h1.toLowerCase() === String(title).toLowerCase()) {
+            return lines.slice(1).join('\n').replace(/^\n+/, '');
+          }
+        }
+        return md;
+      }
+
+      function loadPost(slug) {
+        showPost();
+        fetchPost(slug).then(function(res){
+          var title = res.meta.title || slug;
+          document.title = title + ' - Adit Jain';
+          document.getElementById('post-title').textContent = title;
+          document.getElementById('post-date').textContent = toDateString(res.meta.date);
+          var body = stripLeadingTitle(res.body, title);
+          document.getElementById('post-content').innerHTML = renderMarkdown(body);
+        }).catch(function(){
+          document.getElementById('post-title').textContent = 'Post not found';
+          document.getElementById('post-content').textContent = 'Could not load the requested post.';
+        });
+      }
+
+      function asArrayOfSlugs(data) {
+        if (!data) return [];
+        if (Array.isArray(data) && typeof data[0] === 'string') return data;
+        if (Array.isArray(data) && typeof data[0] === 'object') return data.map(function(p){ return p.slug; });
+        return [];
+      }
+
+      function loadList() {
+        showList();
+        var list = document.getElementById('post-list');
+        fetch('/data/posts.json')
+          .then(function(r){ return r.json(); })
+          .then(function(data){
+            var slugs = asArrayOfSlugs(data);
+            var loaders = slugs.map(function(slug){
+              return fetchPost(slug).then(function(res){ return { slug: slug, meta: res.meta, body: res.body }; })
+                .catch(function(){ return { slug: slug, meta: {}, body: '' }; });
+            });
+            return Promise.all(loaders);
+          })
+          .then(function(posts){
+            // Derive fields from front matter; fallback to slug
+            posts.sort(function(a,b){ return new Date(b.meta.date||0) - new Date(a.meta.date||0); });
+            posts.forEach(function(p){
+              var li = document.createElement('li');
+              var titleLink = document.createElement('a');
+              titleLink.href = '/blog.html?slug=' + encodeURIComponent(p.slug);
+              var titleEl = document.createElement('strong');
+              titleEl.textContent = p.meta.title || p.slug;
+              titleLink.appendChild(titleEl);
+              var meta = document.createElement('div');
+              meta.className = 'post-meta';
+              meta.textContent = toDateString(p.meta.date);
+              var excerpt = document.createElement('div');
+              excerpt.className = 'post-excerpt';
+              excerpt.textContent = p.meta.excerpt || (p.body.split(/\n\n/)[0] || '').replace(/[#*_>`]/g, '').slice(0, 180);
+              li.appendChild(titleLink);
+              if (meta.textContent) li.appendChild(meta);
+              if (excerpt.textContent) li.appendChild(excerpt);
+              list.appendChild(li);
+            });
+          })
+          .catch(function(){
+            var li = document.createElement('li');
+            li.textContent = 'No posts available yet.';
+            list.appendChild(li);
+          });
+      }
+
+      var slug = getSlug();
+      if (slug) { loadPost(slug); } else { loadList(); }
+    })();
+  </script>
+</body>
+<!-- End blog.html -->
+</html>
+
