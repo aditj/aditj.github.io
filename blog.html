@@ -4,10 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog - Adit Jain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css" />
+  <script>
+    // MathJax configuration: support $...$ and $$...$$
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: {
+        skipHtmlTags: ['script','noscript','style','textarea','pre','code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body class="blog-page">
-  <div id="container">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class='background' id="background" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="nav container">
+      <a class="brand" href="/index.html">Adit Jain</a>
+      <button id="menu-toggle" class="btn btn-ghost nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+      <nav id="primary-nav" class="nav-links" aria-label="Primary">
+        <a href="/index.html#publications-section">Publications</a>
+        <a href="/index.html#blog-section">Blog</a>
+        <a href="/index.html#decks-section">Decks</a>
+        <a href="/index.html#contact">Contact</a>
+        <button id="theme-toggle" class="btn btn-ghost" aria-label="Toggle theme">🌙</button>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+  <div id="container" class="container">
     <a class="back-link" id="back-link" href="/index.html">← Home</a>
     <h2 id="blog-heading" class="section">Blog</h2>
 
@@ -19,7 +51,19 @@
       <div id="post-content"></div>
     </article>
   </div>
+  </main>
+  <footer id='contact' class="site-footer">
+    <div class="container">
+      <div class='contact-group'>
+        <a aria-label="GitHub" href="https://github.com/aditj"><img width="28" height="28" src="/images/github.svg" alt="Github"></a>
+        <a aria-label="Email" href="mailto:aditjain1980@gmail.com"><img width="28" height="28" src="/images/mail.png" alt="Email"></a>
+        <a aria-label="LinkedIn" href="https://www.linkedin.com/in/adit-jain/"><img width="28" height="28" src="/images/linkedin.png" alt="LinkedIn"></a>
+      </div>
+      <div class="footer-note">Reach me</div>
+    </div>
+  </footer>
 
+  <script src="/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.2/dist/purify.min.js"></script>
   <script>
@@ -75,7 +119,7 @@
         var heading = document.getElementById('blog-heading');
         heading.hidden = true;
         var back = document.getElementById('back-link');
-        if (back) { back.href = '/blog.html'; back.textContent = '← All posts'; }
+        if (back) { back.href = '/index.html'; back.textContent = '← Home'; }
       }
 
       function fetchPost(slug) {
@@ -89,11 +133,9 @@
         var lines = md.replace(/^\s+/, '').split(/\r?\n/);
         if (lines.length === 0) return md;
         var first = lines[0].trim();
-        if (first.startsWith('# ')) {
-          var h1 = first.slice(2).trim();
-          if (!title || h1.toLowerCase() === String(title).toLowerCase()) {
-            return lines.slice(1).join('\n').replace(/^\n+/, '');
-          }
+        // Always drop a top-level Markdown H1 to avoid duplicate titles
+        if (/^#\s+/.test(first)) {
+          return lines.slice(1).join('\n').replace(/^\n+/, '');
         }
         return md;
       }
@@ -106,7 +148,11 @@
           document.getElementById('post-title').textContent = title;
           document.getElementById('post-date').textContent = toDateString(res.meta.date);
           var body = stripLeadingTitle(res.body, title);
-          document.getElementById('post-content').innerHTML = renderMarkdown(body);
+          var contentEl = document.getElementById('post-content');
+          contentEl.innerHTML = renderMarkdown(body);
+          if (window.MathJax && window.MathJax.typesetPromise) {
+            window.MathJax.typesetPromise([contentEl]).catch(function(err){ console.error('MathJax typeset failed', err); });
+          }
         }).catch(function(){
           document.getElementById('post-title').textContent = 'Post not found';
           document.getElementById('post-content').textContent = 'Could not load the requested post.';
@@ -169,4 +215,3 @@
 </body>
 <!-- End blog.html -->
 </html>
-

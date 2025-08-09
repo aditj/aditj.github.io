@@ -1,28 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Theme toggle
-  const root = document.documentElement;
-  const themeToggle = document.getElementById('theme-toggle');
-  const storedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
-  if (initialTheme === 'dark') {
-    root.setAttribute('data-theme', 'dark');
-    if (themeToggle) themeToggle.textContent = '☀️';
-  }
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      if (isDark) {
-        root.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-        themeToggle.textContent = '🌙';
-      } else {
-        root.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        themeToggle.textContent = '☀️';
-      }
+  // Mobile nav toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const primaryNav = document.getElementById('primary-nav');
+  if (menuToggle && primaryNav) {
+    menuToggle.addEventListener('click', function () {
+      const open = primaryNav.classList.toggle('is-open');
+      this.setAttribute('aria-expanded', String(open));
     });
   }
+
+  // Dark mode disabled; ensure light theme
+  const root = document.documentElement;
+  root.removeAttribute('data-theme');
+  try { localStorage.setItem('theme', 'light'); } catch (_) {}
 
   // Publications: Show all / Show less
   const papersList = document.getElementById('papers');
@@ -112,6 +102,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Decks: collapsed by default, toggle on button click
+  const decks = document.getElementById('decks');
+  const toggleDecksBtn = document.getElementById('toggle-decks');
+  if (toggleDecksBtn && decks) {
+    toggleDecksBtn.addEventListener('click', function () {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      const next = !expanded;
+      this.setAttribute('aria-expanded', String(next));
+      this.textContent = next ? 'Hide decks' : 'Show decks';
+      decks.classList.toggle('hidden', !next);
+      decks.setAttribute('aria-hidden', String(!next));
+    });
+  }
+
   // Populate recent blog posts on the homepage (prefer front-matter in .md files)
   const blogList = document.getElementById('blog');
   function appendBlogItem(href, title, dateText, excerptText) {
@@ -176,5 +180,6 @@ document.addEventListener('DOMContentLoaded', function () {
         appendBlogItem('https://github.com/aditj/aditj.github.io/wiki/Note-on-Flow---the-book---11--07-2020', 'The experience of experience');
       });
   }
-});
 
+  // Image interaction removed for a cleaner, minimal presentation
+});

@@ -18,27 +18,32 @@
     <header class="site-header">
         <div class="nav container">
             <a class="brand" href="#">Adit Jain</a>
-            <nav class="nav-links" aria-label="Primary">
-                <a href="#publications-section">Publications</a>
-                <a href="#blog-section">Blog</a>
-                <a href="#decks-section">Decks</a>
+            <button id="menu-toggle" class="btn btn-ghost nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+            <nav id="primary-nav" class="nav-links" aria-label="Primary">
                 <a href="#contact">Contact</a>
-                <button id="theme-toggle" class="btn btn-ghost" aria-label="Toggle theme">🌙</button>
             </nav>
         </div>
     </header>
     <div id='container' class="container">
+    <main id="main">
     <section id="hero" class="section hero">
         <h1 id='greeting'>Hi, I’m Adit.</h1>
         <p class="subhead">Ph.D. student at Cornell ECE. I study reinforcement learning, distributed optimization, and networks of LLMs.</p>
+        <div class="hero-ctas">
+            <a class="btn btn-primary" href="#publications-section">View publications</a>
+            <a class="btn" href="#blog-section">Read the blog</a>
+        </div>
     </section>
 
     <section id='intro' class="section">
         <div id="intro-text">
-            I am a Ph.D. student at School of Electrical and Computer Engineering at Cornell University, where I work with Prof. Vikram Krishnamurthy on problems related to reinforcement learning (structured stochastic optimal control & bandits), distributed optimization and
+            I am a Ph.D. candidate at the School of Electrical and Computer Engineering at Cornell University, where I am advised by Prof. Vikram Krishnamurthy. 
+            
+            on problems related to reinforcement learning (structured stochastic optimal control & bandits), distributed optimization and
             stochastic games.
-            I recently interned at Adobe Research, where I worked on developing high dimensional sparse bandits algorithms for efficient data annotation, and proved regret bounds for the same. 
-            I am interested in applications in large language models and federated learning. 
+
+            Recently, I interned at the Machine Learning Research Group at Morgan Stanley, where I developed a mixture of tokens generation method to improve reinforcement learning in large language models. 
+            In the summer of 2024, I interned at Adobe Research, where I worked on developing high dimensional sparse bandits algorithms for efficient data annotation, and proved regret bounds for the same. I applied this algorithm to improve the efficiency of supervised fine tuning of large language models.
             Recently, I have been working on the problem of controlling networks of large language models.
             <br>
             Here's the link to my 2 page <a href="https://aditj.github.io/data/Adit_Jain_Resume.pdf">resume</a>.  I did my Bachelor's at IIT Guwahati with a major in Electronics and Communication Engineering and a minor in Computer Science. 
@@ -52,8 +57,6 @@
             <img id='profile' src="data/photo.jpg" alt="Adit Jain">
         </div>
     </section>
-
-    <p class="note">Some sections are a work in progress.</p>
 
     <section id="publications-section" class="section">
         <h2>Publications</h2>
@@ -231,7 +234,7 @@
 
     <section id="decks-section" class="section">
         <h2>Decks</h2>
-        <ul id="decks">
+        <ul id="decks" class="hidden" aria-hidden="true">
             <li><a href="/data/decks/StrategicRoadmap.pdf"> Strategic Roadmap for Ed-Tech in Tier 2/3 Towns</a></li>
             <li><a href="/data/decks/interdeck.pdf"> Handicrafts under Blockchain Deck</a></li>
             <li><a href="/data/decks/interreport.pdf"> Handicrafts under Blockchain Report</a></li>
@@ -240,8 +243,12 @@
             <li><a href="/data/decks/Nexus Pitch.pdf"> Nexus Pitch Deck</a></li>
             <li><a href="/data/decks/Open-Source Session.pdf"> Intro to Open Source</a></li>
         </ul>
+        <div class="actions">
+            <button id="toggle-decks" class="btn" aria-expanded="false" aria-controls="decks">Show decks</button>
+        </div>
     </section>
 
+    </main>
     </div>
 
     <footer id='contact' class="site-footer">
