@@ -66,6 +66,7 @@
   <script src="/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.2/dist/purify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script>
     (function() {
       function getSlug() {
@@ -150,6 +151,30 @@
           var body = stripLeadingTitle(res.body, title);
           var contentEl = document.getElementById('post-content');
           contentEl.innerHTML = renderMarkdown(body);
+          // Mermaid: transform code blocks and render diagrams
+          try {
+            if (window.mermaid) {
+              mermaid.initialize({ startOnLoad: false });
+              var blocks = contentEl.querySelectorAll('pre code.language-mermaid, code.language-mermaid');
+              blocks.forEach(function(code){
+                var pre = code.closest('pre');
+                var graph = code.textContent;
+                var div = document.createElement('div');
+                div.className = 'mermaid';
+                div.textContent = graph;
+                if (pre) {
+                  pre.replaceWith(div);
+                } else {
+                  code.replaceWith(div);
+                }
+              });
+              if (mermaid.run) {
+                mermaid.run({ querySelector: '#post-content .mermaid' });
+              } else if (mermaid.init) {
+                mermaid.init(undefined, contentEl.querySelectorAll('.mermaid'));
+              }
+            }
+          } catch (e) { console.error('Mermaid render failed', e); }
           if (window.MathJax && window.MathJax.typesetPromise) {
             window.MathJax.typesetPromise([contentEl]).catch(function(err){ console.error('MathJax typeset failed', err); });
           }
