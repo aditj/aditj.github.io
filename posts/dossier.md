@@ -6,6 +6,7 @@ excerpt: "next steps"
 
 # Roadmap for dossier
 ---
+## !!! Work in Progress !!!
 ## Objective
 
 - All-round assistant for data-driven decision making under uncertainty.
@@ -15,7 +16,7 @@ excerpt: "next steps"
 ## Features
 - All round: Analyzing information in a contextual manner to make professional, personal and interpersonal decisions.
 - Cost-aware: Before analyzing the issue, the engine estimates and informs the cost and the information required to make the decision; allowing full control to user to increase or decrease the scope and depth of the analysis.
-- Systematic: Clean 4 step approach to decision making.
+- Systematic: Clean 5 step approach to decision making.
     1. Clarify: Criteria, constraints, options and issue. 
     2. Information Collection: Identifying the different unknown facts, options and opinions. Communicate the assumptions made in the process.
     3. Consequences and Risk Management: For each option, sketch best / base / worst outcomes and key risks.
