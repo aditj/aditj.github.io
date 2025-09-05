@@ -20,13 +20,13 @@ excerpt: "next steps"
 
 - Built on open-research and open-source. All artifacts used in this project will be based on existing open-source research and open-source code. The appropriate authors will be credited. 
 
-- Systematic: Clean 5 step approach to decision making.
+- Systematic: Clean 5 step approach to decision making. [This will be improved over right now took a ChatGPT one-shot answer as given in [2]]
     1. Clarify: Criteria, constraints, options and issue. 
     2. Information Collection: Identifying the different unknown facts, options and opinions. Communicate the assumptions made in the process.
     3. Consequences and Risk Management: For each option, sketch best / base / worst outcomes and key risks.
     4. Analysis: Analyzing the collected infomation in a systematic manner based on the criteria and constraints.
     5. Presentation: Presenting the analysis in the requested format.
-
+  - [TODO] Go through [4] and other references to see if there are better models.
 - Intuitive and Accesible: API, Terminal and GUI Access, Web App - other LLMs can call it as a tool, humans can use it intuitively 
 - Collaboration Friendly: Portable to different formats and platforms, sharable with others, templatable for different use cases.
 - Fully customizable: Customizable to different criteria, constraints, options and issue. Type of analysis, depth and breadth of analysis. Ability to add new criteria, constraints, options and issue.
@@ -41,8 +41,9 @@ excerpt: "next steps"
      - Masking of information - Ability to mask information from the cloud APIs if needed using local models.
 
 - Confidence and Calibration: Ability to measure the confidence of the model in its output using heuristics including quality of sources used, degree of the leap made, assumpitons etc.
-  - [TODO] Go through https://github.com/leochlon/hallbayes to see if it has merit. 
-  - [TODO] Go through https://aclanthology.org/2024.naacl-long.366/ and see if this can be done in the first place, if it's fundamentally impossible, then allow the user to set the confidence score.
+  - [TODO] Go through [1] to see if it has merit. 
+  - [TODO] Go through [3] and see if this can be done in the first place, if it's fundamentally impossible, then allow the user to set the confidence score.
+
 - Benchmark: Ability to benchmark on a list of given problems and scenarios. This is also useful in creating an environment for training different components of the engine.
 ---
 ## Technical Implementation
@@ -119,3 +120,9 @@ At the time of starting this project, I don't know of any other open-source prod
 ### Example 7: Why should I meditate?
 
 ### Example 8: I am here, where should I eat?
+
+## References
+1. [HallBayes](https://github.com/leochlon/hallbayes)
+2. [ChatGPT Chat for Decision Making](https://chatgpt.com/share/68baedcc-9298-800e-9201-ea75cd46d73b)
+3. [ACL Paper on Confidence Intervals](https://aclanthology.org/2024.naacl-long.366/)
+4. [Reasoning the fast and frugal way](https://www.dangoldstein.com/papers/FastFrugalPsychReview.pdf)
